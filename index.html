@@ -41,20 +41,20 @@
   </head>
 
   <body class="index">
-    <div id="hero">
+    <div class="hero">
       <div class="container">
 <a href="/">          <h2>Jeremy Venegas</h2>
           <h1>front end web developer &amp; Designer</h1>
 </a>      </div>
     </div>
-
+    
     <div class="tagline padding-sm">
   <div class="container">
     For over 3 years I've been designing and developing websites.
   </div>
 </div>
 
-<div class="container">
+<div class="container fade body">
 	<div id="pitch">
 		<p>
 			I love html, css, and javascript.
@@ -70,23 +70,51 @@
 		</p>
 		<div id="cta">
 			<span>Hire me</span>
-			<h5>(559) 538-0167 | jeremymvenegas@gmail.com</h5>
+			<h5>(559) 538-0167 <span>|</span> jeremymvenegas@gmail.com</h5>
 		</div>
 		<br>
 		<a href="/about.html">About Me</a> | <a target="_blank" href="/images/resume.pdf">Resume</a>
 	</div>
 </div>
 
-    <footer>
+    <footer id="js-fadeInElement" class="fade-in-element">
       <div class="container">
         <ul>
           <li><a href="https://www.linkedin.com/in/jeremyvenegas" target="_blank"><i class="fa fa-linkedin-square"></i></a></li>
           <li><a href="https://www.behance.net/jeremyvenegas" target="_blank"><i class="fa fa-behance-square"></i></a></li>
         </ul>
-        <h5>(559) 538-0167 | jeremymvenegas@gmail.com</h5>
+        <h5>(559) 538-0167 <span>|</span> jeremymvenegas@gmail.com</h5>
         <p>Jeremy Venegas is currently based in Fresno CA with his wife and baby boy.</p>
       </div>
     </footer>
+
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var element = document.getElementById("js-fadeInElement");
+        $(element).addClass('js-fade-element-hide');
+
+        $('.hero .container, .fade').addClass('js-fade-element-show');
+
+        $(window).scroll(function() {
+          if( $("#js-fadeInElement").length > 0 ) {
+            var elementTopToPageTop = $(element).offset().top;
+            var windowTopToPageTop = $(window).scrollTop();
+            var windowInnerHeight = window.innerHeight;
+            var elementTopToWindowTop = elementTopToPageTop - windowTopToPageTop;
+            var elementTopToWindowBottom = windowInnerHeight - elementTopToWindowTop;
+            var distanceFromBottomToAppear = 100;
+
+            if(elementTopToWindowBottom > distanceFromBottomToAppear) {
+              $(element).addClass('js-fade-element-show');
+            }
+            else if(elementTopToWindowBottom < 0) {
+              $(element).removeClass('js-fade-element-show');
+              $(element).addClass('js-fade-element-hide');
+            }
+          }
+        });
+      });
+    </script>
 
   </body>
 </html>
