@@ -1,5 +1,6 @@
-$light-blue: #EDF2F2;
-$pink: #FF1744;
+$yellow: #FFCC2F;
+$brown: #543729;
+$blue: #00ACEE;
 
 html {
 	font-size: 62.5%;
@@ -22,6 +23,14 @@ img {
 	color: #777;
 }
 
+a {
+	color: $blue; 
+	&:hover {
+		text-decoration: none;
+		color: lighten($blue, 9);
+	}
+}
+
 a:active, a:focus {
 	text-decoration: none;
 }
@@ -31,7 +40,7 @@ a.u-btn {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	color: #fff;
-	background-color: #222;
+	background-color: $blue;
 	display: inline-block;
 	padding: 15px 25px;
 	cursor: pointer;
@@ -39,15 +48,32 @@ a.u-btn {
 	transition: all 0.3s;
 	margin: 10px auto;
 	&:hover {
-		background-color: lighten(#222, 5);
+		background-color: lighten($blue, 5);
 		text-decoration: none;
 		color: #fff;
 	}
 }
 
-#hero {
+.fade {
+	opacity: 0;
+}
+
+.hero {
 	padding: 40px 0;
-	background-color: $light-blue;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffd351+2,ffcc2f+68,ffc519+100 */
+	background: #ffd351; /* Old browsers */
+	background: -moz-linear-gradient(left,  #ffd351 2%, #ffcc2f 68%, #ffc519 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, right top, color-stop(2%,#ffd351), color-stop(68%,#ffcc2f), color-stop(100%,#ffc519)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(left,  #ffd351 2%,#ffcc2f 68%,#ffc519 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  #ffd351 2%,#ffcc2f 68%,#ffc519 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  #ffd351 2%,#ffcc2f 68%,#ffc519 100%); /* IE10+ */
+	background: linear-gradient(to right,  #ffd351 2%,#ffcc2f 68%,#ffc519 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd351', endColorstr='#ffc519',GradientType=1 ); /* IE6-9 */
+
+	.container {
+		opacity: 0;
+	}
+
 	a, a:hover {
 		color: #222;
 		text-decoration: none;
@@ -86,7 +112,7 @@ a.u-btn {
 	letter-spacing: 3px;
 	font-size: 2rem;
 	display: block;
-	background-color: $pink;
+	background-color: $brown;
 	color: #fff;
 	text-align:center;
 	@media (min-width:720px) {
@@ -126,12 +152,12 @@ a.u-btn {
 }
 
 #cta {
-	span {
+	& > span {
 		font-size: 18px;
 		text-transform: uppercase;
 		letter-spacing: 2px;
 		color: #fff;
-		background-color: #333;
+		background-color: $blue;
 		display: inline-block;
 		padding: 15px 25px;
 		cursor: pointer;
@@ -140,14 +166,14 @@ a.u-btn {
 		text-align: left;
 		margin-bottom: 10px;
 		&:hover {
-			background-color: $pink;
+			background-color: darken($blue, 5);
 		}
 	}
-	span:hover + h5 {
+	& > span:hover + h5 {
 		opacity: 1;
 	}
-	span:active + h5 {
-		color: $pink;
+	& > span:active + h5 {
+		color: $brown;
 	}
 	h5 {
 		opacity: 0;
@@ -166,7 +192,8 @@ a.u-btn {
 }
 
 footer {
-	background-color: #333;
+	background-color: #eee;
+	border-top:1px solid #ddd;
 	color: #fff;
 	padding: 45px 0;
 	text-align:left;
@@ -180,19 +207,19 @@ footer {
 		}
 	}
 	a {
-		color: #fff;
+		color: rgba(0,0,0,0.3);
 		font-size: 3.6rem;
 		transition: color 0.3s;
 		&:hover {
-			color: $light-blue;
+			color: $blue;
 		}
 	}
 	p {
-		color: #555;
+		color: rgba(0,0,0,0.6);
 		font-size: 1.2rem;
 	}
 	h5 {
-		color: #999;
+		color: rgba(0,0,0,0.8);
 		margin: 0 0 10px 0;
 		font-size: 1.8rem;
 		letter-spacing: 2px;
@@ -200,12 +227,35 @@ footer {
 	}
 }
 
+.js-fade-element-hide {
+  opacity: 0;
+}
+
+.js-fade-element-show {
+	transition: all 0.4s ease-in-out;
+  opacity: 1 !important;
+	&.body {
+		transition: all 0.8s ease-in-out;
+	}
+}
+
+
+
 @media (max-width:720px) {
 	footer {
 		text-align: center;
+		h5 {
+			font-size: 1.2rem;
+			span {
+				display: none;
+			}
+		}
 	}
 	#cta {
 		text-align: center;
+		span {
+			display: none;
+		}
 		h5 {
 			opacity: 1;
 			font-size: 12px;
