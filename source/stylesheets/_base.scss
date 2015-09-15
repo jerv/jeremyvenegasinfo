@@ -23,6 +23,12 @@ img {
 	color: #777;
 }
 
+.no-style {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
 a {
 	color: $blue; 
 	&:hover {
